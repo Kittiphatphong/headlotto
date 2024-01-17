@@ -96,13 +96,13 @@
 
                                         </tr>
                                         <tr class="font-weight-boldest font-size-lg">
-                                            <td class="pl-0 pt-7"><h4>ເປີ​ເຊັນ​ທີ​ໄດ້​ຮັບ​ 20%</h4></td>
-                                            <td class="text-right pt-7"><h4 class="text-success">{{number_format($seller->sells->last()->amount *(20/100))}} ກີບ</h4></td>
+                                            <td class="pl-0 pt-7"><h4>ເປີ​ເຊັນ​ທີ​ໄດ້​ຮັບ​ {{$seller->sells->last()->percent}}%</h4></td>
+                                            <td class="text-right pt-7"><h4 class="text-success">{{number_format($seller->sells->last()->amount *($seller->sells->last()->percent/100))}} ກີບ</h4></td>
 
                                         </tr>
                                         <tr class="font-weight-boldest font-size-lg">
                                             <td class="pl-0 pt-7"><h4>ສົ່ງ​ໃຫ້​ໜ່ວຍ</h4></td>
-                                            <td class="text-right pt-7"><h4 class="text-danger">{{number_format($seller->sells->last()->amount *(80/100))}} ກີບ</h4></td>
+                                            <td class="text-right pt-7"><h4 class="text-danger">{{number_format($seller->sells->last()->amount *((100-$seller->sells->last()->percent)/100))}} ກີບ</h4></td>
 
                                         </tr>
 
@@ -133,7 +133,7 @@
                                     </div>
                                     <div class="d-flex flex-column text-md-right">
                                         <span class="font-size-lg font-weight-bolder mb-1"><h4><b>ລວມ​ສົ່ງ​ໜວຍ​ທັງ​ໝົດ</b></h4></span>
-                                        <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($seller->sells->last()->amount *(80/100))}} ກີບ</span>
+                                        <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($seller->sells->last()->amount *((100-$seller->sells->last()->percent)/100))}} ກີບ</span>
 
                                     </div>
                                 </div>

@@ -42,8 +42,17 @@ class SellController extends Controller
         $count_id = count($request->amount);
 
         for ($i=0;$i<$count_id;$i++){
+            $amount = round(str_replace('.','',$request->amount[$i]));
+            if ($amount<200000){
+                $percent = 20;
+            }else if ($amount>=200000 && $amount<1000000){
+                $percent = 22;
+            }else{
+                $percent = 23;
+            }
             $sell = new Sell();
-            $sell->amount =  round(str_replace('.','',$request->amount[$i]));
+            $sell->amount =  $amount;
+            $sell->percent = $percent;
             $sell->seller_id = $request->seller_id[$i];
             $sell->draw = $request->draw;
             $sell->save();
